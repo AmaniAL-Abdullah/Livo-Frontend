@@ -22,7 +22,7 @@ function RoleList() {
                 <ul>
                     {roles.map(role => {
                         return (
-                            <li>
+                            <li key={role.id}>
                                 <p>{role.name}</p>
                             </li>
                         )
