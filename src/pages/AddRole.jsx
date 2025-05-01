@@ -2,7 +2,7 @@ import React from 'react'
 import RoleForm from '../components/RoleForm/RoleForm'
 import { useState } from 'react'
 import axios from 'axios'
-
+import { authorizedRequest } from '../lib/api'
 
 function AddRole() {
 
@@ -12,11 +12,8 @@ function AddRole() {
     async function handleSubmit(event) {
         event.preventDefault()
         console.log('Handle Submit is running')
-        const payload = { name, description }
-        console.log(payload)
         const url = 'http://127.0.0.1:8000/api/roles/'
-        const response = await axios.post(url, payload)
-        console.log(response.data)
+        const response = await authorizedRequest('post', '/roles/', { name, description })
         setName('')
         setDescription('')
     }

@@ -1,15 +1,20 @@
-import React from 'react'
+import React,{ useEffect, useState } from 'react'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
+import { authorizedRequest } from '../../lib/api'
 
 function RoleList() {
     const [roles, setRoles] = useState([])
 
         async function getAllRoles() {
-            const response = await axios.get('http://127.0.0.1:8000/api/roles/')
-            console.log(response)
+            try{
+                const response = await authorizedRequest('get', '/roles/')
             setRoles(response.data)
+            }
+        catch (err) {
+            console.error('Error fetching posts:', err)
         }
+    }
         useEffect(() =>{
             getAllRoles()
         }, [])
@@ -23,7 +28,7 @@ function RoleList() {
                     {roles.map(role => {
                         return (
                             <li key={role.id}>
-                                <p>{role.name}</p>
+                                <Link to={`/roles/${role.id}`}>{role.name}</Link>
                             </li>
                         )
                     })}

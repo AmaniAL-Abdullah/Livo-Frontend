@@ -1,6 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router'
+
 import Home from './pages/Home'
+import Signup from './pages/Signup'
+import Login from './pages/Login'
+import Logout from './pages/Logout'
 import AddRole from './pages/AddRole'
 
 function App() {
@@ -8,6 +12,9 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/logout' element={<Logout />} />
         <Route path='/roles/new' element={<AddRole />} />
       </Routes>
     </Router>
