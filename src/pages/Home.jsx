@@ -14,6 +14,7 @@ function Home() {
     return (
         <>
             <h1> Welcome to the Role App</h1>
+            <button onClick={handleLogout}> Logout </button>
             <RoleList />
         </>
     )
