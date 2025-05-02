@@ -1,8 +1,8 @@
 import React from 'react'
-import { useParams, useNavigate } from 'react-router'
+import { useParams, useNavigate, Link } from 'react-router'
 import { useState, useEffect } from 'react'
 
-import { authorizedRequest } from '../lib/api'
+import { authorizedRequest } from '../../lib/api'
 
 function RoleDetail() {
     const { id } = useParams()
@@ -61,6 +61,7 @@ function RoleDetail() {
                     :
                     <button onClick={showConfirmDelete}>Delete</button>
             }
+            <Link to={`/roles/${id}/edit`}>Edit This Role</Link>
         </div>
     )
 }

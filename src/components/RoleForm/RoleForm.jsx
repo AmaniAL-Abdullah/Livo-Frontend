@@ -3,7 +3,7 @@ import React from 'react'
 function RoleForm(props) {
     return (
         <div>
-            <h3>Add your Role</h3>
+            <h3>{props.titleVerb}your Role</h3>
             <form onSubmit={props.handleSubmit}>
                 <div>
                     <label htmlFor='name'>Name</label>

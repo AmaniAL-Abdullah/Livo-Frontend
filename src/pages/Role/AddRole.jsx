@@ -1,8 +1,8 @@
 import React from 'react'
-import RoleForm from '../components/RoleForm/RoleForm'
+import RoleForm from '../../components/RoleForm/RoleForm'
 import { useState } from 'react'
 import axios from 'axios'
-import { authorizedRequest } from '../lib/api'
+import { authorizedRequest } from '../../lib/api'
 
 function AddRole() {
 
@@ -27,6 +27,7 @@ function AddRole() {
                 description={description}
                 setDescription={setDescription} 
                 handleSubmit={handleSubmit}
+                titleVerb='Add'
                 />
         </div>
     )
