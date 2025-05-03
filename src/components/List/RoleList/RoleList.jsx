@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from 'react'
 import { Link } from 'react-router'
-import { authorizedRequest } from '../../lib/api'
+import { authorizedRequest } from '../../../lib/api'
 
 function RoleList() {
     const [roles, setRoles] = useState([])

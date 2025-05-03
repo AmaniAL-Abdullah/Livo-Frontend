@@ -1,5 +1,5 @@
 import React from 'react'
-import RoleForm from '../../components/RoleForm/RoleForm'
+import RoleForm from '../../components/Form/RoleForm/RoleForm'
 import { useState } from 'react'
 import axios from 'axios'
 import { authorizedRequest } from '../../lib/api'

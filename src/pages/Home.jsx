@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import RoleList from '../components/RoleList/RoleList'
+import RoleList from '../components/List/RoleList/RoleList'
 
 function Home() {
     const navigate = useNavigate()
