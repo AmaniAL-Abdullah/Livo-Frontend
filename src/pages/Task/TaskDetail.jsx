@@ -38,11 +38,12 @@ function TaskDetail() {
     return (
         <div>
             <h2>Task:</h2>
-            {tasks.map((task, index) => (
-                <div key={index}>
+            {tasks.map((task) => (
+                <div key={task.id}>
                     <h3>{task.title}</h3>
                     <p>{task.description}</p>
                     <p>{task.start_date}</p>
+                    <p>{task.end_date || 'No end date'}</p>
                 </div>
             ))}
         </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
-import axios from 'axios'
 import RoleForm from '../../components/Form/RoleForm/RoleForm'
 import { authorizedRequest } from '../../lib/api'
 

@@ -12,6 +12,9 @@ import RoleDetail from './pages/Role/RoleDetail'
 import RoleEdit from './pages/Role/RoleEdit'
 
 import TaskDetail from './pages/Task/TaskDetail'
+import AddTask from './pages/Task/AddTask'
+
+
 
 function App() {
   return (
@@ -28,6 +31,8 @@ function App() {
         <Route path='/roles/:id/edit' element={<RoleEdit />} />
 
         <Route path='/roles/:id/tasks' element={<TaskDetail />} />
+        <Route path='/roles/:id/tasks/add' element={<AddTask />} />
+
 
       </Routes>
     </Router>

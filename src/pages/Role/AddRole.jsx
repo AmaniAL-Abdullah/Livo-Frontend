@@ -12,7 +12,6 @@ function AddRole() {
     async function handleSubmit(event) {
         event.preventDefault()
         console.log('Handle Submit is running')
-        const url = 'http://127.0.0.1:8000/api/roles/'
         const response = await authorizedRequest('post', '/roles/', { name, description })
         setName('')
         setDescription('')
