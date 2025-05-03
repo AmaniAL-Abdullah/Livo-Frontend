@@ -11,7 +11,7 @@ function RoleList() {
             setRoles(response.data)
             }
         catch (err) {
-            console.error('Error fetching posts:', err)
+            console.error('Error fetching roles:', err)
         }
     }
         useEffect(() =>{
@@ -23,6 +23,7 @@ function RoleList() {
         return (
             <div>
                 <h2> All Role:</h2>
+                <Link to={`/roles/add`}> Add Role</Link>
                 <ul>
                     {roles.map(role => {
                         return (

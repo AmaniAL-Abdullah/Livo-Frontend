@@ -1,11 +1,11 @@
 import React from 'react'
 import RoleForm from '../../components/Form/RoleForm/RoleForm'
 import { useState } from 'react'
-import axios from 'axios'
+import { useNavigate } from 'react-router'
 import { authorizedRequest } from '../../lib/api'
 
 function AddRole() {
-
+    const navigate = useNavigate()
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
 
@@ -28,6 +28,7 @@ function AddRole() {
                 handleSubmit={handleSubmit}
                 titleVerb='Add'
                 />
+            <button onClick={() => navigate('/')}>Back</button>
         </div>
     )
 }

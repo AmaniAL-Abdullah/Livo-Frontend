@@ -1,11 +1,12 @@
 import React from 'react'
 import TaskForm from '../../components/Form/TaskForm/TaskForm'
 import { useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import { authorizedRequest } from '../../lib/api'
 
 function AddTask() {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [start_date, setStart_Date] = useState('')
@@ -15,7 +16,12 @@ function AddTask() {
         event.preventDefault()
         console.log('Handle Submit is running')
         const response = await authorizedRequest(
-            'post', `/tasks/`, {title, description, start_date, end_date, role: id})
+            'post', `/tasks/`, {
+                title,
+                description,
+                start_date, 
+                end_date: end_date || null, 
+                role: id})
         setTitle('')
         setDescription('')
         setStart_Date('')
@@ -37,7 +43,9 @@ function AddTask() {
                 setEnd_Date = {setEnd_Date}
                 
                 handleSubmit={handleSubmit}
+                titleVerb = 'Add'
             />
+            <button onClick={() => navigate(-1)}>Back</button>
         </div>
     )
 }

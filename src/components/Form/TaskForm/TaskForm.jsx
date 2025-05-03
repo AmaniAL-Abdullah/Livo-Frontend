@@ -3,7 +3,7 @@ import React from 'react'
 function TaskForm(props) {
     return (
         <div>
-            <h3>Add your Task:</h3>
+            <h3>{props.titleVerb} your task:</h3>
             <form onSubmit={props.handleSubmit}>
                 <div>
                     <label htmlFor='title'>Title</label>
@@ -32,7 +32,7 @@ function TaskForm(props) {
                         id='start_date'
                         name='start_date'
                         required
-                        value={props.startDate}
+                        value={props.start_date}
                         onChange={event => props.setStart_Date(event.target.value)}
                     />
                 </div>
@@ -42,7 +42,7 @@ function TaskForm(props) {
                         type='date'
                         id='end_date'
                         name='end_date'
-                        value={props.endDate}
+                        value={props.end_date}
                         onChange={event => props.setEnd_Date(event.target.value)}
                     />
                 </div>

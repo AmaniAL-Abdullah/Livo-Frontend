@@ -38,6 +38,7 @@ function RoleEdit() {
                 handleSubmit={handleSubmit}
                 titleVerb = 'Edit'
             />
+            <button onClick={() => navigate(-1)}> Back</button>
         </div>
     )
 }

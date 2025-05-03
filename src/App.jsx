@@ -13,6 +13,8 @@ import RoleEdit from './pages/Role/RoleEdit'
 
 import TaskDetail from './pages/Task/TaskDetail'
 import AddTask from './pages/Task/AddTask'
+import TaskEdit from './pages/Task/TaskEdit'
+import RoleTasks from './pages/Task/RoleTasks'
 
 
 
@@ -24,14 +26,16 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />
-        <Route path='*' element={<NotFound />}/>
+        <Route path='*' element={<NotFound />} />
 
-        <Route path='/roles/new' element={<AddRole />} />
+        <Route path='/roles/add' element={<AddRole />} />
         <Route path='roles/:id' element={<RoleDetail />} />
         <Route path='/roles/:id/edit' element={<RoleEdit />} />
 
-        <Route path='/roles/:id/tasks' element={<TaskDetail />} />
-        <Route path='/roles/:id/tasks/add' element={<AddTask />} />
+        <Route path="/roles/:id/tasks" element={<RoleTasks />} />
+        <Route path="/roles/:id/tasks/add" element={<AddTask />} />
+        <Route path='/task/:id' element={<TaskDetail />} />
+        <Route path="/task/:id/edit" element={<TaskEdit />} />
 
 
       </Routes>

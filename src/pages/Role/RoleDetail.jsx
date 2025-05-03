@@ -62,6 +62,9 @@ function RoleDetail() {
                     <button onClick={showConfirmDelete}>Delete</button>
             }
             <Link to={`/roles/${id}/edit`}>Edit This Role</Link>
+            <Link to={`/roles/${id}/tasks`}>Show Task</Link>
+
+            <button onClick={() => navigate('/')}> Back</button>
         </div>
     )
 }
