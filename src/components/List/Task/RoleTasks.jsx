@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
-import { authorizedRequest } from '../../lib/api'
+import { authorizedRequest } from '../../../lib/api'
 
 function RoleTasks() {
     const { id } = useParams() 

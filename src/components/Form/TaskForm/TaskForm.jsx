@@ -42,7 +42,7 @@ function TaskForm(props) {
                         type='date'
                         id='end_date'
                         name='end_date'
-                        value={props.end_date}
+                        value={props.end_date || ''}
                         onChange={event => props.setEnd_Date(event.target.value)}
                     />
                 </div>

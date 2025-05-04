@@ -14,7 +14,7 @@ import RoleEdit from './pages/Role/RoleEdit'
 import TaskDetail from './pages/Task/TaskDetail'
 import AddTask from './pages/Task/AddTask'
 import TaskEdit from './pages/Task/TaskEdit'
-import RoleTasks from './pages/Task/RoleTasks'
+import RoleTasks from './components/List/Task/RoleTasks'
 
 import AchievementDetail from './pages/Achievement/AchievementDetail'
 import AchievementEdit from './pages/Achievement/AchievementEdit'

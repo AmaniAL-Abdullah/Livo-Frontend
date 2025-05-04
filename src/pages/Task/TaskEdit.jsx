@@ -31,7 +31,6 @@ function TaskEdit() {
             description,
             start_date,
             end_date,
-            role: id,
         })
         navigate(`/task/${id}`)
     }
