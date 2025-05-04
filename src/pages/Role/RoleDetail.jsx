@@ -116,3 +116,43 @@ function RoleTasksTable({ roleId }) {
     )
 }
 
+
+function RoleAchievementsTable({ roleId }) {
+    const [achievements, setAchievements] = useState([])
+
+    useEffect(() => {
+        async function fetchAchievements() {
+            const response = await authorizedRequest('get', `/roles/${roleId}/achievements/`)
+            setAchievements(response.data)
+        }
+        fetchAchievements()
+    }, [roleId])
+
+    if (!achievements.length) return <p>No achievements found for this role.</p>
+
+    return (
+        <div>
+            <h3>Achievements:</h3>
+            <table border="1" cellPadding="8">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {achievements.map(achievement => (
+                        <tr key={achievement.id}>
+                            <td>
+                                <Link to={`/achievement/${achievement.id}`}>{achievement.title}</Link>
+                            </td>
+                            <td>{achievement.description}</td>
+                            <td>{achievement.start_date}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
+}
