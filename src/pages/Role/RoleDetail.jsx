@@ -61,13 +61,58 @@ function RoleDetail() {
                     :
                     <button onClick={showConfirmDelete}>Delete</button>
             }
-            <Link to={`/roles/${id}/edit`}>Edit This Role</Link>
-            <Link to={`/roles/${id}/tasks`}>Show Task</Link>
-            <Link to={`/roles/${id}/achievements`}>Show Achievements</Link>
+            <Link to={`/roles/${id}/edit`}>Edit Role</Link>
+            <RoleTasksTable roleId={id} />
+            <RoleAchievementsTable roleId={id} />
 
+            
             <button onClick={() => navigate('/')}> Back</button>
         </div>
     )
 }
 
 export default RoleDetail
+
+
+function RoleTasksTable({ roleId }) {
+    const [tasks, setTasks] = useState([])
+
+    useEffect(() => {
+        async function fetchTasks() {
+            const response = await authorizedRequest('get', `/roles/${roleId}/tasks/`)
+            setTasks(response.data)
+        }
+        fetchTasks()
+    }, [roleId])
+
+    if (!tasks.length) return <p>No tasks found for this role.</p>
+
+    return (
+        <div>
+            <h3>Tasks:</h3>
+            <table border="1" cellPadding="8">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tasks.map(task => (
+                        <tr key={task.id}>
+                            <td>
+                                <Link to={`/task/${task.id}`}>{task.title}</Link>
+                            </td>
+                            <td>{task.description}</td>
+                            <td>{task.start_date}</td>
+                            <td>{task.end_date || '—'}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
+}
+
