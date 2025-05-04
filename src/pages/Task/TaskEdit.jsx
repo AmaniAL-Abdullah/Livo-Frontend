@@ -11,6 +11,7 @@ function TaskEdit() {
     const [description, setDescription] = useState('')
     const [start_date, setStart_Date] = useState('')
     const [end_date, setEnd_Date] = useState('')
+    const [status, setStatus] = useState('not_started')
 
     async function getCurrentTaskData() {
         const response = await authorizedRequest('get', `/task/${id}/`)
@@ -18,6 +19,7 @@ function TaskEdit() {
         setDescription(response.data.description)
         setStart_Date(response.data.start_date)
         setEnd_Date(response.data.end_date)
+        setStatus(response.data.status)
     }
 
     useEffect(() => {
@@ -31,6 +33,7 @@ function TaskEdit() {
             description,
             start_date,
             end_date,
+            status,
         })
         navigate(`/task/${id}`)
     }
@@ -47,6 +50,8 @@ function TaskEdit() {
                 setStart_Date={setStart_Date}
                 end_date={end_date}
                 setEnd_Date={setEnd_Date}
+                status={status}
+                setStatus={setStatus}
                 handleSubmit={handleSubmit}
                 titleVerb='Edit'
             />

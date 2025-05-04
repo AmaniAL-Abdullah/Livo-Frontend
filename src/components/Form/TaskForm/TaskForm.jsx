@@ -46,6 +46,22 @@ function TaskForm(props) {
                         onChange={event => props.setEnd_Date(event.target.value)}
                     />
                 </div>
+                <div>
+                    <label htmlFor='status'>Status</label>
+                    <select
+                        id='status'
+                        name='status'
+                        value={props.status}
+                        onChange={event => props.setStatus(event.target.value)}
+                        required
+                    >
+                        <option value='not_started'>Not Started</option>
+                        <option value='in_progress'>In Progress</option>
+                        <option value='completed'>Completed</option>
+                        <option value='cancelled'>Cancelled</option>
+                    </select>
+                </div>
+
                 <button type='submit'>Submit</button>
             </form>
         </div>

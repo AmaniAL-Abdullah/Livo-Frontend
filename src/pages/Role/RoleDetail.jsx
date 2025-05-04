@@ -12,39 +12,39 @@ function RoleDetail() {
     const [deleteConfirm, setDeleteConfirm] = useState(false)
 
     async function getSingleRole() {
-            try {
-                const response = await authorizedRequest('get', `/roles/${id}`)
-                setRole(response.data)
-            } catch (err) {
-                console.log(err)
-                if (err.status === 404) {
-                    navigate('/not-found')
-                } else {
-                    setErrorMsg('Something went Wrong :-(')
-                }
+        try {
+            const response = await authorizedRequest('get', `/roles/${id}`)
+            setRole(response.data)
+        } catch (err) {
+            console.log(err)
+            if (err.status === 404) {
+                navigate('/not-found')
+            } else {
+                setErrorMsg('Something went Wrong :-(')
             }
         }
+    }
 
     useEffect(() => {
-            getSingleRole()
-            console.log(id)
-        }, [])
+        getSingleRole()
+        console.log(id)
+    }, [])
 
 
     async function deleteRole() {
-            try {
-                const response = await authorizedRequest('delete', `/roles/${id}/`)
-                if (response.status === 204) {
-                    navigate('/')
-                }
-            } catch (err) {
-                console.log(' Role deletion failed:', err)
+        try {
+            const response = await authorizedRequest('delete', `/roles/${id}/`)
+            if (response.status === 204) {
+                navigate('/')
             }
+        } catch (err) {
+            console.log(' Role deletion failed:', err)
         }
+    }
 
     function showConfirmDelete() {
-            setDeleteConfirm(true)
-        }
+        setDeleteConfirm(true)
+    }
 
 
     if (errorMsg) return <h1>{errorMsg}</h1>
@@ -65,7 +65,7 @@ function RoleDetail() {
             <RoleTasksTable roleId={id} />
             <RoleAchievementsTable roleId={id} />
 
-            
+
             <button onClick={() => navigate('/')}> Back</button>
         </div>
     )
@@ -77,6 +77,14 @@ export default RoleDetail
 function RoleTasksTable({ roleId }) {
     const [tasks, setTasks] = useState([])
 
+    const statusLabels = {
+        not_started: '🕓 Not Started',
+        in_progress: '⚙️ In Progress',
+        completed: '✅ Completed',
+        cancelled: '❌ Cancelled',
+    }
+
+    
     useEffect(() => {
         async function fetchTasks() {
             const response = await authorizedRequest('get', `/roles/${roleId}/tasks/`)
@@ -97,6 +105,7 @@ function RoleTasksTable({ roleId }) {
                         <th>Description</th>
                         <th>Start Date</th>
                         <th>End Date</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,6 +117,7 @@ function RoleTasksTable({ roleId }) {
                             <td>{task.description}</td>
                             <td>{task.start_date}</td>
                             <td>{task.end_date || '—'}</td>
+                            <td>{statusLabels[task.status]}</td>
                         </tr>
                     ))}
                 </tbody>

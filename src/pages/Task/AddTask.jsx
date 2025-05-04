@@ -11,6 +11,7 @@ function AddTask() {
     const [description, setDescription] = useState('')
     const [start_date, setStart_Date] = useState('')
     const [end_date, setEnd_Date]= useState('')
+    const [status, setStatus] = useState('not_started')
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -21,11 +22,13 @@ function AddTask() {
                 description,
                 start_date, 
                 end_date: end_date || null, 
+                status,
                 role: id})
         setTitle('')
         setDescription('')
         setStart_Date('')
         setEnd_Date('')
+        setStatus('')
     }
 
 
@@ -41,7 +44,8 @@ function AddTask() {
                 setStart_Date = {setStart_Date}
                 end_date = {end_date}
                 setEnd_Date = {setEnd_Date}
-                
+                status ={status}
+                setStatus = {setStatus}
                 handleSubmit={handleSubmit}
                 titleVerb = 'Add'
             />
