@@ -42,7 +42,10 @@ function App() {
         <Route path='/task/:id' element={<TaskDetail />} />
         <Route path="/task/:id/edit" element={<TaskEdit />} />
 
-
+        <Route path="/roles/:id/achievements" element={<RoleAchievements />} />
+        <Route path="/roles/:id/achievements/add" element={<AddAchievement />} />
+        <Route path='/achievement/:id' element={<AchievementDetail />} />
+        <Route path="/achievement/:id/edit" element={<AchievementEdit />} />
 
 
       </Routes>
