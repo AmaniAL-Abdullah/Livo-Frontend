@@ -19,7 +19,7 @@ import RoleTasks from './pages/Task/RoleTasks'
 import AchievementDetail from './pages/Achievement/AchievementDetail'
 import AchievementEdit from './pages/Achievement/AchievementEdit'
 import AddAchievement from './pages/Achievement/AddAchievement'
-import RoleAchievements from './pages/Achievement/RoleAchievements'
+import RoleAchievements from './components/List/Achievent/RoleAchievements'
 
 
 
