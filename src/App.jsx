@@ -16,6 +16,11 @@ import AddTask from './pages/Task/AddTask'
 import TaskEdit from './pages/Task/TaskEdit'
 import RoleTasks from './pages/Task/RoleTasks'
 
+import AchievementDetail from './pages/Achievement/AchievementDetail'
+import AchievementEdit from './pages/Achievement/AchievementEdit'
+import AddAchievement from './pages/Achievement/AddAchievement'
+import RoleAchievements from './pages/Achievement/RoleAchievements'
+
 
 
 function App() {
@@ -36,6 +41,8 @@ function App() {
         <Route path="/roles/:id/tasks/add" element={<AddTask />} />
         <Route path='/task/:id' element={<TaskDetail />} />
         <Route path="/task/:id/edit" element={<TaskEdit />} />
+
+
 
 
       </Routes>

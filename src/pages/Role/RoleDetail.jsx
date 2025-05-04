@@ -63,6 +63,7 @@ function RoleDetail() {
             }
             <Link to={`/roles/${id}/edit`}>Edit This Role</Link>
             <Link to={`/roles/${id}/tasks`}>Show Task</Link>
+            <Link to={`/roles/${id}/achievements`}>Show Achievements</Link>
 
             <button onClick={() => navigate('/')}> Back</button>
         </div>
