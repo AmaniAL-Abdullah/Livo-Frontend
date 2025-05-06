@@ -1,7 +1,20 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
-import { setTokens } from '../lib/api'
-import axios from 'axios'
+import { useState } from "react"
+import { useNavigate } from "react-router"
+import { setTokens } from "../lib/api"
+import axios from "axios"
+import { Link } from "react-router"
+
+// UI
+import {
+    Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,
+    Input,
+    Button,
+    Alert
+} from "@material-tailwind/react"
 
 function Login() {
     const navigate = useNavigate()
@@ -38,28 +51,64 @@ function Login() {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit">Login</button>
-                {error && <p>{error}</p>}
-            </form>
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+            <Card className="w-full max-w-lg rounded-xl border border-gray-200 shadow-md">
+                <CardHeader floated={false} shadow={false} className="text-center p-8">
+                    <Typography variant="h5" color="blue-gray" className="mb-2">
+                        Welcome Back 👋
+                    </Typography>
+                    <Typography color="gray" className="text-sm font-normal max-w-md mx-auto">
+                        Please log in to continue
+                    </Typography>
+                </CardHeader>
+
+                <form onSubmit={handleSubmit}>
+                    <CardBody className="space-y-4 px-8">
+                        <div>
+                            <Typography variant="small" className="font-semibold mb-1">
+                                Username
+                            </Typography>
+                            <Input
+                                name="username"
+                                type="text"
+                                placeholder="Enter your username"
+                                value={formData.username}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <Typography variant="small" className="font-semibold mb-1">
+                                Password
+                            </Typography>
+                            <Input
+                                name="password"
+                                type="password"
+                                placeholder="Enter your password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        {error && <Alert color="red">{error}</Alert>}
+
+                        <Button type="submit" fullWidth className="bg-gray-900 hover:bg-gray-800">
+                            Login
+                        </Button>
+                    </CardBody>
+                </form>
+
+                <CardFooter className="text-center px-8 pb-8 pt-0">
+                    <Typography variant="small" color="gray">
+                        Don't have an account?{" "}
+                        <Link to="/signup" className="text-blue-700 font-medium">
+                            Signup
+                        </Link>
+                    </Typography>
+                </CardFooter>
+            </Card>
         </div>
     )
 }
