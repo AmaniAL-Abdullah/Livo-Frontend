@@ -3,6 +3,13 @@ import { useParams, useNavigate } from 'react-router'
 import AchievementForm from '../../components/Form/AchievementForm/AchievementForm'
 import { authorizedRequest } from '../../lib/api'
 
+import {
+    Card,
+    CardBody,
+    Typography,
+    Button
+} from '@material-tailwind/react'
+
 function AchievementEdit() {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -33,22 +40,32 @@ function AchievementEdit() {
         navigate(`/achievement/${id}`)
     }
 
-
     return (
-        <div>
-            <h2>Edit Task Page</h2>
-            <AchievementForm
-                title={title}
-                setTitle={setTitle}
-                description={description}
-                setDescription={setDescription}
-                date={date}
-                setDate={setDate}
+        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+            <Card className="w-full max-w-3xl shadow-lg p-6 border border-gray-200 rounded-xl">
+                <CardBody>
+                    <Typography variant="h4" className="mb-6">
+                        Edit Task Page
+                    </Typography>
 
-                handleSubmit={handleSubmit}
-                titleVerb='Edit'
-            />
-            <button onClick={() => navigate(`/achievement/${id}`)}> Back</button>
+                    <AchievementForm
+                        title={title}
+                        setTitle={setTitle}
+                        description={description}
+                        setDescription={setDescription}
+                        date={date}
+                        setDate={setDate}
+                        handleSubmit={handleSubmit}
+                        titleVerb="Edit"
+                    />
+
+                    <div className="mt-6">
+                        <Button variant="outlined" color="gray" onClick={() => navigate(`/achievement/${id}`)}>
+                            Back
+                        </Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     )
 }

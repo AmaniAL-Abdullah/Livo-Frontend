@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import TaskForm from '../../components/Form/TaskForm/TaskForm'
 import { authorizedRequest } from '../../lib/api'
+import {
+    Card,
+    CardBody,
+    Typography,
+    Button
+} from '@material-tailwind/react'
 
 function TaskEdit() {
     const { id } = useParams()
@@ -39,23 +45,35 @@ function TaskEdit() {
     }
 
     return (
-        <div>
-            <h2>Edit Task Page</h2>
-            <TaskForm
-                title={title}
-                setTitle={setTitle}
-                description={description}
-                setDescription={setDescription}
-                start_date={start_date}
-                setStart_Date={setStart_Date}
-                end_date={end_date}
-                setEnd_Date={setEnd_Date}
-                status={status}
-                setStatus={setStatus}
-                handleSubmit={handleSubmit}
-                titleVerb='Edit'
-            />
-            <button onClick={() => navigate(`/task/${id}`)}> Back</button>
+        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+            <Card className="w-full max-w-3xl shadow-lg p-6 border border-gray-200 rounded-xl">
+                <CardBody>
+                    <Typography variant="h4" className="mb-6">
+                        Edit Task Page
+                    </Typography>
+
+                    <TaskForm
+                        title={title}
+                        setTitle={setTitle}
+                        description={description}
+                        setDescription={setDescription}
+                        start_date={start_date}
+                        setStart_Date={setStart_Date}
+                        end_date={end_date}
+                        setEnd_Date={setEnd_Date}
+                        status={status}
+                        setStatus={setStatus}
+                        handleSubmit={handleSubmit}
+                        titleVerb='Edit'
+                    />
+
+                    <div className="mt-6">
+                        <Button variant="outlined" color="gray" onClick={() => navigate(`/task/${id}`)}>
+                            Back
+                        </Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     )
 }

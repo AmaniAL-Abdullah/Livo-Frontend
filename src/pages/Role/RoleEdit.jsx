@@ -1,8 +1,14 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router'
 import RoleForm from '../../components/Form/RoleForm/RoleForm'
 import { authorizedRequest } from '../../lib/api'
+
+import {
+    Card,
+    CardBody,
+    Typography,
+    Button
+} from '@material-tailwind/react'
 
 function RoleEdit() {
     const { id } = useParams()
@@ -22,24 +28,36 @@ function RoleEdit() {
 
     async function handleSubmit(event) {
         event.preventDefault()
-        const response = await authorizedRequest('patch', `/roles/${id}/`, { name, description})
+        const response = await authorizedRequest('patch', `/roles/${id}/`, { name, description })
         navigate(`/roles/${id}`)
-
     }
 
     return (
-        <div>
-            <h2>Edite Role page </h2>
-            <RoleForm
-                name={name}
-                setName={setName}
-                description={description}
-                setDescription={setDescription}
-                handleSubmit={handleSubmit}
-                titleVerb = 'Edit'
-            />
-            <button onClick={() => navigate(-1)}> Back</button>
+        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+            <Card className="w-full max-w-3xl shadow-lg p-6 border border-gray-200 rounded-xl">
+                <CardBody>
+                    <Typography variant="h4" className="mb-6">
+                        Edit Role Page
+                    </Typography>
+
+                    <RoleForm
+                        name={name}
+                        setName={setName}
+                        description={description}
+                        setDescription={setDescription}
+                        handleSubmit={handleSubmit}
+                        titleVerb="Edit"
+                    />
+
+                    <div className="mt-6">
+                        <Button variant="outlined" color="gray" onClick={() => navigate(-1)}>
+                            Back
+                        </Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     )
 }
+
 export default RoleEdit

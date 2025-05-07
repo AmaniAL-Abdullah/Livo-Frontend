@@ -3,6 +3,13 @@ import { useEffect, useState } from 'react'
 import { authorizedRequest } from '../../lib/api'
 import { Link } from 'react-router'
 
+import {
+    Card,
+    CardBody,
+    Typography,
+    Button
+} from '@material-tailwind/react'
+
 function TaskDetail() {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -10,7 +17,6 @@ function TaskDetail() {
     const [errorMsg, setErrorMsg] = useState('')
     const [deleteConfirm, setDeleteConfirm] = useState(false)
     const [roleId, setRoleId] = useState(null)
-    
 
     useEffect(() => {
         async function fetchTask() {
@@ -26,41 +32,58 @@ function TaskDetail() {
         fetchTask()
     }, [id])
 
-
     async function deleteTask() {
-            try {
-                const response = await authorizedRequest('delete', `/task/${id}/`)
-                if (response.status === 204) {
-                    navigate('/')
-                }
-            } catch (err) {
-                console.log(' Task deletion failed:', err)
+        try {
+            const response = await authorizedRequest('delete', `/task/${id}/`)
+            if (response.status === 204) {
+                navigate('/')
             }
+        } catch (err) {
+            console.log('Task deletion failed:', err)
         }
+    }
 
     function showConfirmDelete() {
-            setDeleteConfirm(true)
-        }
-
+        setDeleteConfirm(true)
+    }
 
     if (errorMsg) return <h1>{errorMsg}</h1>
     if (!task) return <h1>Loading...</h1>
 
     return (
-        <div>
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
-            <p>Start: {task.start_date}</p>
-            <p>End: {task.end_date || 'No end date'}</p>
-            {
-                deleteConfirm
-                    ?
-                    <button onClick={deleteTask}>Are you Sure?</button>
-                    :
-                    <button onClick={showConfirmDelete}>Delete</button>
-            }
-            <Link to={`/task/${id}/edit`}> Edit</Link>
-            <button onClick={() => navigate(`/roles/${roleId}/tasks`)}> Back</button>
+        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+            <Card className="max-w-3xl w-full p-6 shadow-lg border border-gray-200 rounded-xl">
+                <CardBody className="space-y-6">
+                    <Typography variant="h4" color="blue-gray">
+                        {task.title}
+                    </Typography>
+                    <Typography color="gray">{task.description}</Typography>
+                    <div className="space-y-2">
+                        <Typography>Start: <span className="font-medium">{task.start_date}</span></Typography>
+                        <Typography>End: <span className="font-medium">{task.end_date || 'No end date'}</span></Typography>
+                    </div>
+
+                    <div className="flex gap-4 mt-6 flex-wrap">
+                        {deleteConfirm ? (
+                            <Button color="red" onClick={deleteTask}>
+                                Are you Sure?
+                            </Button>
+                        ) : (
+                            <Button color="red" onClick={showConfirmDelete}>
+                                Delete
+                            </Button>
+                        )}
+
+                        <Link to={`/task/${id}/edit`}>
+                            <Button color="blue">Edit</Button>
+                        </Link>
+
+                        <Button variant="outlined" onClick={() => navigate(`/roles/${roleId}`)}>
+                            Back
+                        </Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     )
 }

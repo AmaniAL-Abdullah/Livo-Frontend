@@ -1,9 +1,14 @@
-import React from 'react'
-import AchievementForm from '../../components/Form/AchievementForm/AchievementForm'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router'
+import AchievementForm from '../../components/Form/AchievementForm/AchievementForm'
 import { authorizedRequest } from '../../lib/api'
 
+import {
+    Card,
+    CardBody,
+    Typography,
+    Button
+} from '@material-tailwind/react'
 
 export default function AddAchievement() {
     const { id } = useParams()
@@ -15,8 +20,7 @@ export default function AddAchievement() {
     async function handleSubmit(event) {
         event.preventDefault()
         console.log('Handle Submit is running')
-        const response = await authorizedRequest(
-            'post', `/achievements/`, {
+        const response = await authorizedRequest('post', `/achievements/`, {
             title,
             description,
             date,
@@ -24,25 +28,35 @@ export default function AddAchievement() {
         })
         setTitle('')
         setDescription('')
-        setDate('') 
+        setDate('')
     }
 
     return (
-        <div>
-            <h2> Achievement Add</h2>
-            <AchievementForm 
-                            title={title}
-                            setTitle={setTitle}
-                            description={description}
-                            setDescription={setDescription}
-                            date={date}
-                            setDate = {setDate}
+        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+            <Card className="w-full max-w-3xl shadow-lg p-6 border border-gray-200 rounded-xl">
+                <CardBody>
+                    <Typography variant="h4" className="mb-6">
+                        Achievement Add
+                    </Typography>
 
-                            handleSubmit={handleSubmit}
-                            titleVerb = 'Add'
-            />
-            <button onClick={() => navigate(-1)}>Back</button>
+                    <AchievementForm
+                        title={title}
+                        setTitle={setTitle}
+                        description={description}
+                        setDescription={setDescription}
+                        date={date}
+                        setDate={setDate}
+                        handleSubmit={handleSubmit}
+                        titleVerb="Add"
+                    />
+
+                    <div className="mt-6">
+                        <Button variant="outlined" color="gray" onClick={() => navigate(-1)}>
+                            Back
+                        </Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
-        
     )
 }

@@ -1,8 +1,14 @@
-import React from 'react'
-import RoleForm from '../../components/Form/RoleForm/RoleForm'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
+import RoleForm from '../../components/Form/RoleForm/RoleForm'
 import { authorizedRequest } from '../../lib/api'
+
+import {
+    Card,
+    CardBody,
+    Typography,
+    Button
+} from '@material-tailwind/react'
 
 function AddRole() {
     const navigate = useNavigate()
@@ -18,17 +24,29 @@ function AddRole() {
     }
 
     return (
-        <div>
-            <h2> Role Add</h2>
-            <RoleForm
-                name={name}
-                setName={setName}
-                description={description}
-                setDescription={setDescription} 
-                handleSubmit={handleSubmit}
-                titleVerb='Add'
-                />
-            <button onClick={() => navigate('/')}>Back</button>
+        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+            <Card className="w-full max-w-3xl shadow-lg p-6 border border-gray-200 rounded-xl">
+                <CardBody>
+                    <Typography variant="h4" className="mb-6">
+                        Role Add
+                    </Typography>
+
+                    <RoleForm
+                        name={name}
+                        setName={setName}
+                        description={description}
+                        setDescription={setDescription}
+                        handleSubmit={handleSubmit}
+                        titleVerb="Add"
+                    />
+
+                    <div className="mt-6">
+                        <Button variant="outlined" color="gray" onClick={() => navigate('/')}>
+                            Back
+                        </Button>
+                    </div>
+                </CardBody>
+            </Card>
         </div>
     )
 }

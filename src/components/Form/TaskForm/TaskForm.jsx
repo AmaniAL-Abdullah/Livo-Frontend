@@ -1,72 +1,93 @@
-import React from 'react'
+import {
+    Input,
+    Select,
+    Option,
+    Typography,
+    Button,
+} from '@material-tailwind/react'
 
 function TaskForm(props) {
     return (
-        <div>
-            <h3>{props.titleVerb} your task:</h3>
-            <form onSubmit={props.handleSubmit}>
-                <div>
-                    <label htmlFor='title'>Title</label>
-                    <input
-                        id='title'
-                        name='title'
-                        required
-                        value={props.title}
-                        onChange={event => props.setTitle(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='description'>Description</label>
-                    <input
-                        id='description'
-                        name='description'
-                        required
-                        value={props.description}
-                        onChange={event => props.setDescription(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='start_date'>Start Date</label>
-                    <input
-                        type='date'
-                        id='start_date'
-                        name='start_date'
-                        required
-                        value={props.start_date}
-                        onChange={event => props.setStart_Date(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='end_date'>End Date</label>
-                    <input
-                        type='date'
-                        id='end_date'
-                        name='end_date'
-                        value={props.end_date || ''}
-                        onChange={event => props.setEnd_Date(event.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor='status'>Status</label>
-                    <select
-                        id='status'
-                        name='status'
-                        value={props.status}
-                        onChange={event => props.setStatus(event.target.value)}
-                        required
-                    >
-                        <option value='not_started'>Not Started</option>
-                        <option value='in_progress'>In Progress</option>
-                        <option value='completed'>Completed</option>
-                        <option value='cancelled'>Cancelled</option>
-                    </select>
-                </div>
+        <form onSubmit={props.handleSubmit} className="space-y-6">
+            <Typography variant="h6" className="text-gray-800">
+                {props.titleVerb} your task:
+            </Typography>
 
-                <button type='submit'>Submit</button>
-            </form>
-        </div>
+            <div className="space-y-1">
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+                    Title
+                </label>
+                <Input
+                    id="title"
+                    name="title"
+                    required
+                    value={props.title}
+                    onChange={(e) => props.setTitle(e.target.value)}
+                />
+            </div>
+
+            <div className="space-y-1">
+                <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+                    Description
+                </label>
+                <Input
+                    id="description"
+                    name="description"
+                    required
+                    value={props.description}
+                    onChange={(e) => props.setDescription(e.target.value)}
+                />
+            </div>
+
+            <div className="space-y-1">
+                <label htmlFor="start_date" className="block text-sm font-medium text-gray-700">
+                    Start Date
+                </label>
+                <Input
+                    type="date"
+                    id="start_date"
+                    name="start_date"
+                    required
+                    value={props.start_date}
+                    onChange={(e) => props.setStart_Date(e.target.value)}
+                />
+            </div>
+
+            <div className="space-y-1">
+                <label htmlFor="end_date" className="block text-sm font-medium text-gray-700">
+                    End Date
+                </label>
+                <Input
+                    type="date"
+                    id="end_date"
+                    name="end_date"
+                    value={props.end_date || ''}
+                    onChange={(e) => props.setEnd_Date(e.target.value)}
+                />
+            </div>
+
+            <div className="space-y-1">
+                <label htmlFor="status" className="block text-sm font-medium text-gray-700">
+                    Status
+                </label>
+                <Select
+                    id="status"
+                    name="status"
+                    value={props.status}
+                    onChange={(val) => props.setStatus(val)}
+                >
+                    <Option value="not_started">Not Started</Option>
+                    <Option value="in_progress">In Progress</Option>
+                    <Option value="completed">Completed</Option>
+                    <Option value="cancelled">Cancelled</Option>
+                </Select>
+            </div>
+
+            <Button type="submit" color="blue" className="w-full mt-4">
+                Submit
+            </Button>
+        </form>
     )
 }
-
 
 export default TaskForm
