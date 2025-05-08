@@ -1,12 +1,89 @@
-# React + Vite
+# Livo Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Livo** is a web application designed to streamline personal productivity by allowing users to manage **roles**, assign **tasks**, and track **achievements** in a clear and structured way.
 
-Currently, two official plugins are available:
+----
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+*   **React.js** – JavaScript library for building user interfaces  
+*   **React Router** – Routing management
+*   **Axios** – HTTP client for API communication    
+*   **Tailwind CSS** – Utility-first CSS framework for styling     
+*   **Vite** – Fast build tool for modern frontend development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+----
+
+## Backend Repository
+
+You can find the backend repository here:  
+[https://git.generalassemb.ly/amani/livo-backend](https://git.generalassemb.ly/amani/livo-backend)
+
+----
+
+## Installation Instructions
+
+### 1\. Clone this repository
+
+git clone [https://git.generalassemb.ly/amani/livo-frontend.git](https://git.generalassemb.ly/amani/livo-frontend.git)  
+cd livo-frontend
+
+### 2\. Install dependencies
+
+npm install
+
+### 3\. Create an environment variable file
+
+touch .env
+
+Then add your API base URL:
+
+VITE\_BASE\_URL=http://127.0.0.1:8000/api
+
+### 4\. Run the development server
+
+npm run dev
+
+----
+
+## Screenshots
+
+### Wireframe
+![Wireframe](src/assets/Screenshots/Wireframe.jpg)
+
+### Home Page
+
+![Home Page](src/assets/Screenshots/1.png)
+
+### Role Detail
+
+![Role Detail](src/assets/Screenshots/2.png)
+
+### Task List
+
+![Task List](src/assets/Screenshots/3.png)
+
+### Achievement List
+
+![Achievement List](src/assets/Screenshots/4.png)
+
+----
+
+## IceBox Features
+
+*   Calendar integration for task deadlines     
+*   Drag-and-drop interface for reordering tasks    
+*   Dark mode theme toggle    
+*   Notifications for upcoming tasks or achievements    
+*   Ability to share roles with other users
+
+----
+
+## Resources
+
+*   https://tailwindcss.com
+*   https://www.material-tailwind.com/
+*   https://lucide.dev/icons/
+*   https://webgradients.com/
+*   https://www.canva.com/
+*   https://logo.com/  
