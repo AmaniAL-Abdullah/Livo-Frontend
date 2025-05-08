@@ -1,7 +1,9 @@
 import { useParams, useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 import { authorizedRequest } from '../../lib/api'
-import { Link } from 'react-router'
+
+import { Link } from 'react-router-dom'
+import { ChevronLeft } from "lucide-react"
 
 import {
     Card,
@@ -54,6 +56,15 @@ function TaskDetail() {
         <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
             <Card className="max-w-3xl w-full p-6 shadow-lg border border-gray-200 rounded-xl">
                 <CardBody className="space-y-6">
+                <div className="pb-6">
+                        <Link
+                            to={`/roles`}
+                            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#ef9131]"
+                        >
+                            <ChevronLeft className="w-4 h-4" />
+                            <span>Back</span>
+                        </Link>
+                    </div>
                     <Typography variant="h4" color="blue-gray">
                         {task.title}
                     </Typography>
@@ -78,9 +89,6 @@ function TaskDetail() {
                             <Button color="blue">Edit</Button>
                         </Link>
 
-                        <Button variant="outlined" onClick={() => navigate(`/roles/${roleId}`)}>
-                            Back
-                        </Button>
                     </div>
                 </CardBody>
             </Card>

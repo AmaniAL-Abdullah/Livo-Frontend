@@ -6,7 +6,11 @@ export default {
         "./node_modules/@material-tailwind/react/**/*.{js,ts,jsx,tsx}"
     ],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ['Poppins', 'sans-serif'],
+            },
+        },
     },
     plugins: [],
 }

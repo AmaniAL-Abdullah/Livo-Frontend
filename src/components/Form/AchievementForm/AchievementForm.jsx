@@ -51,7 +51,7 @@ function AchievementForm(props) {
                 />
             </div>
 
-            <Button type="submit" color="blue" className="w-full mt-4">
+            <Button type="submit"  className="w-full mt-4 bg-[#ef9131] hover:bg-gray-400">
                 Submit
             </Button>
         </form>

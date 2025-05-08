@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 
 import { authorizedRequest } from '../../lib/api'
 
+import { ChevronLeft } from "lucide-react"
+
 import {
     Card,
     Typography,
@@ -13,7 +15,6 @@ import {
     Button,
 }
     from "@material-tailwind/react"
-
 
 function RoleDetail() {
     const { id } = useParams()
@@ -63,6 +64,15 @@ function RoleDetail() {
         <div className="min-h-screen bg-gray-50 px-4 py-8">
             <Card className="max-w-5xl mx-auto p-6 shadow-lg">
                 <CardBody className="space-y-6">
+                    <div className="pt-4">
+                        <Link
+                            to="/roles"
+                            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#ef9131]"
+                        >
+                            <ChevronLeft className="w-4 h-4" />
+                            <span>Back</span>
+                        </Link>
+                    </div>
                     <div className="flex justify-between items-center">
                         <div>
                             <Typography variant="h4">{role.name}</Typography>
@@ -79,7 +89,7 @@ function RoleDetail() {
                                 </Button>
                             )}
                             <Link to={`/roles/${id}/edit`}>
-                                <Button color="blue">Edit Role</Button>
+                                <Button className="bg-[#ef9131]">Edit Role</Button>
                             </Link>
                         </div>
                     </div>
@@ -87,11 +97,7 @@ function RoleDetail() {
                     <RoleTasksTable roleId={id} />
                     <RoleAchievementsTable roleId={id} />
 
-                    <div className="pt-4">
-                        <Button variant="outlined" color="gray" onClick={() => navigate('/')}>
-                            Back
-                        </Button>
-                    </div>
+
                 </CardBody>
             </Card>
         </div>
@@ -128,52 +134,57 @@ function RoleTasksTable({ roleId }) {
         fetchTasks()
     }, [roleId])
 
-    if (!tasks.length) return <p className="text-center text-gray-600">No tasks found for this role.</p>;
 
     return (
         <Card className="mt-8 shadow-lg border border-gray-200 rounded-xl">
             <CardBody className="overflow-x-auto px-6 py-4">
-                <Typography variant="h6" className="mb-4 text-gray-800">
-                    Tasks
-                </Typography>
-                <Link
-                    to={`/roles/${roleId}/tasks/add`}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
-                >
-                    + Add New Task
-                </Link>
-                <table className="w-full table-auto text-left">
-                    <thead>
-                        <tr className="bg-blue-gray-50">
-                            <th className="p-3"><Typography variant="small" className="font-bold">Title</Typography></th>
-                            <th className="p-3"><Typography variant="small" className="font-bold">Description</Typography></th>
-                            <th className="p-3"><Typography variant="small" className="font-bold">Start Date</Typography></th>
-                            <th className="p-3"><Typography variant="small" className="font-bold">End Date</Typography></th>
-                            <th className="p-3"><Typography variant="small" className="font-bold">Status</Typography></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tasks.map((task, index) => (
-                            <tr key={task.id} className="even:bg-blue-gray-50">
-                                <td className="p-3">
-                                    <Link to={`/task/${task.id}`} className="text-blue-600 hover:underline">
-                                        {task.title}
-                                    </Link>
-                                </td>
-                                <td className="p-3">{task.description}</td>
-                                <td className="p-3">{task.start_date}</td>
-                                <td className="p-3">{task.end_date || "—"}</td>
-                                <td className="p-3">
-                                    <Chip
-                                        size="sm"
-                                        color={statusColors[task.status]}
-                                        value={statusLabels[task.status]}
-                                    />
-                                </td>
+                <div className="flex justify-between items-center mb-4">
+                    <Typography variant="h6" className="text-gray-800">
+                        Tasks
+                    </Typography>
+                    <Link
+                        to={`/roles/${roleId}/tasks/add`}
+                        className="bg-[#565893] hover:bg-[#ef9131] text-white px-4 py-2 rounded-lg text-sm"
+                    >
+                        + Add New Task
+                    </Link>
+                </div>
+                {tasks.length === 0 ? (
+                    <p className="text-center text-gray-600">No tasks found for this role.</p>
+                ) : (
+                    <table className="w-full table-auto text-left">
+                        <thead>
+                            <tr className="bg-blue-gray-50">
+                                <th className="p-3"><Typography variant="small" className="font-bold">Title</Typography></th>
+                                <th className="p-3"><Typography variant="small" className="font-bold">Description</Typography></th>
+                                <th className="p-3"><Typography variant="small" className="font-bold">Start Date</Typography></th>
+                                <th className="p-3"><Typography variant="small" className="font-bold">End Date</Typography></th>
+                                <th className="p-3"><Typography variant="small" className="font-bold">Status</Typography></th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {tasks.map((task, index) => (
+                                <tr key={task.id} className="even:bg-blue-gray-50">
+                                    <td className="p-3">
+                                        <Link to={`/task/${task.id}`} className="text-blue-600 hover:underline">
+                                            {task.title}
+                                        </Link>
+                                    </td>
+                                    <td className="p-3">{task.description}</td>
+                                    <td className="p-3">{task.start_date}</td>
+                                    <td className="p-3">{task.end_date || "—"}</td>
+                                    <td className="p-3">
+                                        <Chip
+                                            size="sm"
+                                            color={statusColors[task.status]}
+                                            value={statusLabels[task.status]}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </CardBody>
         </Card>
     );
@@ -192,55 +203,53 @@ function RoleAchievementsTable({ roleId }) {
         fetchAchievements()
     }, [roleId])
 
-    if (!achievements.length)
-        return <p className="text-center text-gray-600">No achievements found for this role.</p>
-
     return (
         <Card className="mt-8 shadow-lg border border-gray-200 rounded-xl">
             <CardBody className="overflow-x-auto px-6 py-4">
-                <Typography variant="h6" className="mb-4 text-gray-800">
-                    Achievements
-                </Typography>
-                <Link
-                    to={`/roles/${roleId}/achievements/add`}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
-                >
-                    + Add Achievement
-                </Link>
-                <table className="w-full table-auto text-left">
-                    <thead>
-                        <tr className="bg-blue-gray-50">
-                            <th className="p-3">
-                                <Typography variant="small" className="font-bold">
-                                    Title
-                                </Typography>
-                            </th>
-                            <th className="p-3">
-                                <Typography variant="small" className="font-bold">
-                                    Description
-                                </Typography>
-                            </th>
-                            <th className="p-3">
-                                <Typography variant="small" className="font-bold">
-                                    Date
-                                </Typography>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {achievements.map((achievement) => (
-                            <tr key={achievement.id} className="even:bg-blue-gray-50">
-                                <td className="p-3">
-                                    <Link to={`/achievement/${achievement.id}`} className="text-blue-600 hover:underline">
-                                        {achievement.title}
-                                    </Link>
-                                </td>
-                                <td className="p-3">{achievement.description}</td>
-                                <td className="p-3">{achievement.start_date}</td>
+                <div className="flex justify-between items-center mb-4">
+                    <Typography variant="h6" className="text-gray-800">
+                        Achievements
+                    </Typography>
+                    <Link
+                        to={`/roles/${roleId}/achievements/add`}
+                        className="bg-[#565893] hover:bg-[#ef9131] text-white px-4 py-2 rounded-lg text-sm"
+                    >
+                        + Add Achievement
+                    </Link>
+                </div>
+
+                {achievements.length === 0 ? (
+                    <p className="text-center text-gray-600">No achievements found for this role.</p>
+                ) : (
+                    <table className="w-full table-auto text-left">
+                        <thead>
+                            <tr className="bg-blue-gray-50">
+                                <th className="p-3">
+                                    <Typography variant="small" className="font-bold">Title</Typography>
+                                </th>
+                                <th className="p-3">
+                                    <Typography variant="small" className="font-bold">Description</Typography>
+                                </th>
+                                <th className="p-3">
+                                    <Typography variant="small" className="font-bold">Date</Typography>
+                                </th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {achievements.map((achievement) => (
+                                <tr key={achievement.id} className="even:bg-blue-gray-50">
+                                    <td className="p-3">
+                                        <Link to={`/achievement/${achievement.id}`} className="text-blue-600 hover:underline">
+                                            {achievement.title}
+                                        </Link>
+                                    </td>
+                                    <td className="p-3">{achievement.description}</td>
+                                    <td className="p-3">{achievement.date}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
             </CardBody>
         </Card>
     )

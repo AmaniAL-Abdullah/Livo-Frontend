@@ -39,11 +39,15 @@ function Login() {
 
         try {
             const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/token/`, formData)
+
+            localStorage.setItem('username', formData.username)
+
             setTokens({
                 access: response.data.access,
                 refresh: response.data.refresh
             })
-            navigate('/')
+
+            navigate('/roles')
         } catch (err) {
             console.log(err)
             setError('Invalid username or password')
@@ -94,7 +98,7 @@ function Login() {
 
                         {error && <Alert color="red">{error}</Alert>}
 
-                        <Button type="submit" fullWidth className="bg-gray-900 hover:bg-gray-800">
+                        <Button type="submit" fullWidth className="bg-[#ef9131] hover:bg-[#565893]">
                             Login
                         </Button>
                     </CardBody>

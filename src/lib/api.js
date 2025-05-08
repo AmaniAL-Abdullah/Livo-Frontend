@@ -17,6 +17,7 @@ async function refreshAccessToken() {
             `${baseUrl}/token/refresh/`,
             { refresh: refreshToken }
         )
+        const newAccess = response.data.access
         setTokens({ access: response.data.access })
         console.log('access token has been refreshed')
         return newAccess
