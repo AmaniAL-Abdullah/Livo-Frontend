@@ -46,7 +46,7 @@ function AddTask() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+        <div className="min-h-screen flex justify-center items-center px-4 py-10">
 
             <Card className="w-full max-w-3xl shadow-lg p-6 border border-gray-200 rounded-xl">
 

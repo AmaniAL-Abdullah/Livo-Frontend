@@ -83,7 +83,7 @@ function TaskForm(props) {
                 </Select>
             </div>
 
-            <Button type="submit" color="blue" className="w-full mt-4 bg-[#ef9131] hover:bg-gray-400">
+            <Button type="submit" color="blue" className="w-full mt-4 rounded-[100px] bg-[#f48362] hover:bg-gray-400">
                 Submit
             </Button>
         </form>

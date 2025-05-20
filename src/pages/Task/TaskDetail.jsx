@@ -53,7 +53,7 @@ function TaskDetail() {
     if (!task) return <h1>Loading...</h1>
 
     return (
-        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+        <div className="min-h-screen flex justify-center items-center px-4 py-10">
             <Card className="max-w-3xl w-full p-6 shadow-lg border border-gray-200 rounded-xl">
                 <CardBody className="space-y-6">
                 <div className="pb-6">
@@ -80,13 +80,13 @@ function TaskDetail() {
                                 Are you Sure?
                             </Button>
                         ) : (
-                            <Button color="red" onClick={showConfirmDelete}>
+                            <Button className="rounded-[100px]" color="red" onClick={showConfirmDelete}>
                                 Delete
                             </Button>
                         )}
 
                         <Link to={`/task/${id}/edit`}>
-                            <Button color="blue">Edit</Button>
+                            <Button className=" rounded-[100px] bg-[#f48362] hover:bg-gray-400">Edit</Button>
                         </Link>
 
                     </div>

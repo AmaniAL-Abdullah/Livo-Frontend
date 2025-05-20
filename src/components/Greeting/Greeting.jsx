@@ -27,7 +27,7 @@ function Greeting() {
             <h2 className="text-2xl font-semibold text-gray-700">
                 {greeting}{username ? `.. ${username} 👋` : ' 👋'}
             </h2>
-            <p className="text-gray-600 mt-1">{today}</p>
+            <p className="text-gray-500 mt-1">{today}</p>
         </div>
     )
 }

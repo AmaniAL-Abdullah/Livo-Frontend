@@ -30,17 +30,17 @@ function RoleList() {
 
     return (
         <section className="container mx-auto py-10 px-4">
+            
             <Greeting />
-
             <div className="flex items-center justify-between mb-6">
-                <Typography variant="h4" className="text-gray-700 font-bold">
+                <Typography variant="h4" className="text-[#444444] font-bold">
                     Roles Overview
                 </Typography>
 
                 <Link to="/roles/add">
                     <Button
                         size="sm"
-                        className="flex items-center gap-2 bg-[#ef9131] hover:bg-[#565893]"
+                        className="flex items-center gap-2 rounded-[100px] bg-[#f48362] hover:bg-[#3a49d9]"
                     >
                         <Plus className="w-4 h-4" />
                         Add Role
@@ -52,14 +52,14 @@ function RoleList() {
                 {roles.map((role) => (
                     <Card
                         key={role.id}
-                        className="p-6 rounded-2xl shadow-lg border border-blue-100 bg-white hover:shadow-xl transition duration-300"
+                        className="p-6 rounded-2xl shadow-lg border border-blue-100 bg-white/85 hover:shadow-xl transition duration-300"
                     >
                         <CardHeader
                             floated={false}
                             shadow={false}
-                            className="flex items-center justify-center bg-[#7070FF]/10 w-16 h-16 rounded-full mx-auto mb-4"
+                            className="flex items-center justify-center bg-[#6f6fff]/10 w-16 h-16 rounded-full mx-auto mb-4"
                         >
-                            <span className="text-2xl font-bold text-[#565893]">
+                            <span className="text-2xl font-bold text-[#6f6fff]">
                                 {role.name[0].toUpperCase()}
                             </span>
                         </CardHeader>
@@ -67,7 +67,7 @@ function RoleList() {
                         <CardBody className="text-center space-y-2">
                             <Typography
                                 variant="h5"
-                                className="text-[#565893] capitalize"
+                                className="text-[#6f6fff] capitalize"
                             >
                                 {role.name}
                             </Typography>
@@ -79,7 +79,7 @@ function RoleList() {
                             <Link to={`/roles/${role.id}`}>
                                 <Button
                                     size="sm"
-                                    className="mt-4 bg-[#565893] hover:bg-[#ef9131] text-white"
+                                    className="mt-4 bg-[#6f6fff] hover:bg-[#f48362] text-white rounded-full"
                                 >
                                     View Details
                                 </Button>

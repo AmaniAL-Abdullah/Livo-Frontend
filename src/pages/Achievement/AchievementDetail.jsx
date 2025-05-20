@@ -52,7 +52,7 @@ function AchievementDetail() {
     if (!achievement) return <h1>Loading...</h1>
 
     return (
-        <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4 py-10">
+        <div className="min-h-screen flex justify-center items-center px-4 py-10">
             <Card className="w-full max-w-2xl shadow-lg p-6 border border-gray-200 rounded-xl">
                 <CardBody className="space-y-4">
                 <div className="pb-6">
@@ -82,12 +82,12 @@ function AchievementDetail() {
                                 Are you Sure?
                             </Button>
                         ) : (
-                            <Button color="red" onClick={showConfirmDelete}>
+                            <Button className="rounded-[100px]" color="red" onClick={showConfirmDelete}>
                                 Delete
                             </Button>
                         )}
 
-                        <Button color="blue" onClick={() => navigate(`/achievement/${id}/edit`)}>
+                        <Button className=" rounded-[100px] bg-[#f48362] hover:bg-gray-400" onClick={() => navigate(`/achievement/${id}/edit`)}>
                             Edit
                         </Button>
                     </div>

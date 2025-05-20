@@ -23,6 +23,7 @@ import AddAchievement from './pages/Achievement/AddAchievement'
 import RoleAchievements from './components/List/Achievent/RoleAchievements'
 
 import Layout from './components/Layout/Layout'
+import TestPage from './pages/TestPage'
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/test" element={<TestPage />} />
       </Routes>
 
     </Router>

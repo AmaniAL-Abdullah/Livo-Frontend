@@ -1,4 +1,4 @@
-# 🚀 Livo Frontend
+# ✨ Livo Frontend
 
 **Livo** is a web application designed to streamline personal productivity by allowing users to manage **roles**, assign **tasks**, and track **achievements** in a clear and structured way.
 
@@ -17,7 +17,7 @@
 ## 🔗 Backend Repository
 
 You can find the backend repository here:  
-https://git.generalassemb.ly/amani/livo-backend
+https://github.com/AmaniAL-Abdullah/Livo-Backend
 
 ---
 
@@ -25,7 +25,7 @@ https://git.generalassemb.ly/amani/livo-backend
 
 ### 1. Clone this repository
 
-git clone https://git.generalassemb.ly/amani/livo-frontend.git  
+git clone https://github.com/AmaniAL-Abdullah/Livo-Frontend
 cd livo-frontend
 
 ### 2. Install dependencies

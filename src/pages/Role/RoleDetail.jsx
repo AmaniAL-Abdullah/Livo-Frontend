@@ -61,7 +61,7 @@ function RoleDetail() {
     if (!role) return <h1>Loading your Role...</h1>
 
     return (
-        <div className="min-h-screen bg-gray-50 px-4 py-8">
+        <div className="min-h-screen px-4 py-8">
             <Card className="max-w-5xl mx-auto p-6 shadow-lg">
                 <CardBody className="space-y-6">
                     <div className="pt-4">
@@ -84,12 +84,12 @@ function RoleDetail() {
                                     Are you sure?
                                 </Button>
                             ) : (
-                                <Button color="red" onClick={showConfirmDelete}>
+                                <Button className="rounded-[100px]" color="red" onClick={showConfirmDelete}>
                                     Delete
                                 </Button>
                             )}
                             <Link to={`/roles/${id}/edit`}>
-                                <Button className="bg-[#ef9131]">Edit Role</Button>
+                                <Button className="bg-[#f48362] rounded-[100px]">Edit Role</Button>
                             </Link>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ function RoleTasksTable({ roleId }) {
 
     const statusColors = {
         not_started: "amber",
-        in_progress: "indigo",
+        in_progress: "blue",
         completed: "green",
         cancelled: "red",
     }
@@ -144,7 +144,7 @@ function RoleTasksTable({ roleId }) {
                     </Typography>
                     <Link
                         to={`/roles/${roleId}/tasks/add`}
-                        className="bg-[#565893] hover:bg-[#ef9131] text-white px-4 py-2 rounded-lg text-sm"
+                        className="bg-[#6f6fff] hover:bg-[#f48362] text-white px-4 py-2 text-sm rounded-[100px] "
                     >
                         + Add New Task
                     </Link>
@@ -212,7 +212,7 @@ function RoleAchievementsTable({ roleId }) {
                     </Typography>
                     <Link
                         to={`/roles/${roleId}/achievements/add`}
-                        className="bg-[#565893] hover:bg-[#ef9131] text-white px-4 py-2 rounded-lg text-sm"
+                        className="bg-[#6f6fff] hover:bg-[#f48362] text-white px-4 py-2 rounded-[100px] text-sm"
                     >
                         + Add Achievement
                     </Link>

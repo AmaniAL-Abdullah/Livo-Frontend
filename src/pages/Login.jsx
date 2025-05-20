@@ -98,7 +98,7 @@ function Login() {
 
                         {error && <Alert color="red">{error}</Alert>}
 
-                        <Button type="submit" fullWidth className="bg-[#ef9131] hover:bg-[#565893]">
+                        <Button type="submit" fullWidth className="rounded-[100px] bg-[#3a49d9] hover:bg-[#f48362]">
                             Login
                         </Button>
                     </CardBody>
