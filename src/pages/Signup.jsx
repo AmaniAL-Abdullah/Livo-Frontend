@@ -34,8 +34,8 @@ function Signup() {
             setTokens(response.data)
             navigate('/login')
         } catch (err) {
-            console.log(err)
-            setError('Signup failed. Please check your info.')
+            console.log(err.response.data)
+            setError(JSON.stringify(err.response.data))
         }
     }
 
